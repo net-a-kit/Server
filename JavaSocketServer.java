@@ -1,7 +1,3 @@
-import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
-
 //Finn Raae
 //9/13/2020
 //Computer Networks - iterative socket server
@@ -23,6 +19,10 @@ import java.net.Socket;
 //    Current Users - list of users currently connected to the server
 //    Running Processes - list of programs currently running on the server
 
+import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 
 public class JavaSocketServer {
 
@@ -30,15 +30,15 @@ public class JavaSocketServer {
 		try {
 			//start connection
 			System.out.println("waiting for client.");
-			ServerSocket serverSocket = new ServerSocket(6868);		//create server
-			Socket socket = serverSocket.accept();					//listen for connection
+			ServerSocket serverSocket = new ServerSocket(6868);					//create server
+			Socket socket = serverSocket.accept();							//listen for connection
 			System.out.println("connected");
 			
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));	//make reader
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);	//make printer
-			while (true) {	//while loop to get input over and over again
+			while (true) {										//while loop to get input over and over again
 				//get input
-				String input = in.readLine();	//input varirable
+				String input = in.readLine();							//input variable
 				
 				//send output
 				out.print("This is the output you  said:" + input);				//output
@@ -59,15 +59,15 @@ public class JavaSocketServer {
 					out.print("get the information for Current Use");			//output
 				}
 				else if (input.equals("Running Processes")) {
-					out.print("get the information for Running Processes");		//output
+					out.print("get the information for Running Processes");			//output
 				}
 				else if (input.equals("Exit")) {
-					out.print("Goodbye and have a nice day.");					//output
-					socket.close();												//close client
-					serverSocket.close();										//close server
+					out.print("Goodbye and have a nice day.");				//output
+					socket.close();								//close client
+					serverSocket.close();							//close server
 				}
 				else {
-					out.print("Please enter a Valid Command.");					//output
+					out.print("Please enter a Valid Command.");				//output
 				}
 				
 			}
