@@ -14,9 +14,13 @@ Our first notable design choice was that we created a JavaServer object to handl
 To test the total turn-around time of the Iterative Socket Server, we asked the client to generate 1, 5, 10, 15, 20, and 25 requests to the server for each available command. The total and average elapsed times of each request is recorded in the table below and for clarity we have graphed the total elapsed time by number of requests and the average elapsed time by number of requests. Looking at the total time in microseconds graph we see that the Date and Time remains constant as the number of threads increases. The Date and Time requests take a constant amount of time, probably because this is the only request that does not execute a Linux command, but simply creates an object using the Date class. The Running Processes and Current Users commands begin to increase in time more drastically after 20 requests are made. As the number of clients increases, the time to run Netstat, Uptime, and Memory Use all slowly increase.
 By looking at the average time in microseconds graph we find more helpful data. We can see that as the number of requests increases, the average time spent executing these requests also increases following a linear path. This changes after 20 requests are made. The time spent on Running Processes and Current Users increases more dramatically, while Netstat, Uptime, and Memory Use all plateau. The average time of Memory Use indicates that there is a certain amount of overhead in executing that function. Executing only one request took almost the same time as it took to execute five of the same requests. As Memory Use, Netstat, and Uptime all reach more than 20 requests, the individual requests are more efficient. While the total time increases as the number of requests increases, average time per request remains constant in those three cases.
 
+![image1](/images/Picture1.png)
 
+![image2](/images/Picture2.png)
 
+![image3](/images/Picture3.JPG)
 
+![image4](/images/Picture4.JPG)
 
 # Conclusion and Lessons Learned
 
